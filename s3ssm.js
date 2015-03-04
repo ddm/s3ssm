@@ -4,9 +4,11 @@ var AWS = require('aws-sdk');
 var walk = require('walk');
 var mime = require('mime');
 var fs = require('fs');
+var path = require('path');
 var program = require('commander');
 
-var package = fs.readFileSync('./package.json', {encoding: 'utf-8'});
+var packagePath = path.join(__dirname, 'package.json');
+var package = fs.readFileSync(packagePath, {encoding: 'utf-8'});
 var VERSION = JSON.parse(package).version;
 
 function upload (baseDir, bucket, config) {
