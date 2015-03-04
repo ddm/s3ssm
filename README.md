@@ -1,3 +1,5 @@
+[![Dependency Status](https://david-dm.org/ddm/s3ssm.svg?theme=shields.io)](https://david-dm.org/ddm/s3ssm)
+
 Install
 -------
 
