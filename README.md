@@ -19,4 +19,4 @@ Windows:
 Configuration
 -------------
 
-See the AWS documentation: http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html#Credentials_from_Disk
+See the [AWS documentation]( http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html#Credentials_from_Disk).
