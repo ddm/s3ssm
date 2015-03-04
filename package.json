@@ -1,6 +1,6 @@
 {
   "name": "s3ssm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "S3 Static Site Manager",
   "main": "s3ssm.js",
   "bin": { "s3ssm" : "./s3ssm.js" },

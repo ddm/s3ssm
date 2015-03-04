@@ -49,7 +49,7 @@ program
   .version(VERSION)
   .option('-d, --directory <directory>', 'Directory to upload')
   .option('-b, --bucket <name>', 'S3 bucket name')
-  .option('-c, --config [file]', 'JSON configuration file', './config.json')
+  .option('-c, --config [file]', 'JSON configuration file (defaults to ./config.json)', './config.json')
   .parse(process.argv);
 
 var config = program.config || './config.json';
