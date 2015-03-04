@@ -6,6 +6,9 @@ var mime = require('mime');
 var fs = require('fs');
 var program = require('commander');
 
+var package = fs.readFileSync('./package.json', {encoding: 'utf-8'});
+var VERSION = JSON.parse(package).version;
+
 function upload (baseDir, bucket, config) {
 
   AWS.config.loadFromPath(config);
@@ -43,7 +46,7 @@ function upload (baseDir, bucket, config) {
 }
 
 program
-  .version('0.0.0')
+  .version(VERSION)
   .option('-d, --directory <directory>', 'Directory to upload')
   .option('-b, --bucket <name>', 'S3 bucket name')
   .option('-c, --config [file]', 'JSON configuration file', './config.json')
