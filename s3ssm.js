@@ -21,7 +21,7 @@ function upload (baseDir, bucket, config) {
   var files   = [];
   var walker  = walk.walk(baseDir, { followLinks: false });
 
-  var ignored = [".DS_Store", ".git"];
+  var ignored = [".DS_Store", ".git", "LICENSE", "README.md"];
 
   function isIgnored (fileName, dirName) {
     var result = false;
