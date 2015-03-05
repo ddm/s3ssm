@@ -30,7 +30,6 @@ function upload (baseDir, bucket, config) {
     _.each(ignored, function (candidate) {
         if (dirName.indexOf(candidate) !== -1) result = true;
     });
-    console.log(fileName, dirName, result);
     return result;
   }
 
