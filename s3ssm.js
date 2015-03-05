@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+"use strict";
+
 var AWS = require('aws-sdk');
 var walk = require('walk');
 var mime = require('mime');
@@ -66,9 +68,4 @@ console.log('Upload', directory);
 console.log('to bucket', bucket);
 console.log('using configuration:', config);
 
-program.confirm('continue? ', function(ok) {
-  if (ok) {
-    upload(directory, bucket, config);
-  }
-  process.exit();
-});
+upload(directory, bucket, config);
