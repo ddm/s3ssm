@@ -10,8 +10,8 @@ var path = require('path');
 var program = require('commander');
 
 var packagePath = path.join(__dirname, 'package.json');
-var package = fs.readFileSync(packagePath, {encoding: 'utf-8'});
-var VERSION = JSON.parse(package).version;
+var packageJson = fs.readFileSync(packagePath, {encoding: 'utf-8'});
+var VERSION = JSON.parse(packageJson).version;
 
 function upload (baseDir, bucket, config) {
 
