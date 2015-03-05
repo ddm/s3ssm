@@ -7,6 +7,7 @@ var walk = require('walk');
 var mime = require('mime');
 var fs = require('fs');
 var path = require('path');
+var _ = require("underscore");
 var program = require('commander');
 
 var packagePath = path.join(__dirname, 'package.json');
@@ -20,10 +21,23 @@ function upload (baseDir, bucket, config) {
   var files   = [];
   var walker  = walk.walk(baseDir, { followLinks: false });
 
+  var ignored = [".DS_Store", ".git"];
+
+  function isIgnored (fileName, dirName) {
+    var result = false;
+    if (_.contains(ignored, fileName)) result = true;
+    if (_.contains(ignored, dirName)) result = true;
+    _.each(ignored, function (candidate) {
+        if (dirName.indexOf(candidate) !== -1) result = true;
+    });
+    console.log(fileName, dirName, result);
+    return result;
+  }
+
   walker.on('file', function(root, stat, next) {
     var name = stat.name;
-    if (name !== ".DS_Store") {
-      var relativeDir = root.replace(baseDir, '');
+    var relativeDir = root.replace(baseDir, '');
+    if (!isIgnored(name, relativeDir)) {
       var fullName = relativeDir === '' ? name : (relativeDir + '/' + name).replace('/', '');
       files.push(fullName);
     }
@@ -34,7 +48,7 @@ function upload (baseDir, bucket, config) {
     files.forEach(function(file) {
       fs.readFile(baseDir + file, function (err, data) {
         if (err) { throw err; }
-        s3.client.putObject({
+        s3.upload({
           Bucket: bucket,
           Key: file,
           Body: data,
