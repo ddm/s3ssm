@@ -19,4 +19,12 @@ Windows:
 Configuration
 -------------
 
+Typically your configuration (`./config.json` by default) will look like:
+
+    {
+        "accessKeyId": "MyAccessKeyId",
+        "secretAccessKey": "MySecretAccessKey",
+        "region": "eu-west-1"
+    }
+
 See the [AWS documentation]( http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html#Credentials_from_Disk).
